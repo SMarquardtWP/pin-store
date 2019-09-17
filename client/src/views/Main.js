@@ -8,6 +8,15 @@ class Main extends React.Component {
         <h1>main</h1>
         <Link to="/product/">Product</Link>
         <Link to="/contact/">Contact</Link>
+        <section>
+          <h1>header/navbar</h1>
+        </section>
+        <section>
+          <h1>Products</h1>
+        </section>
+        <section>
+          <h1>Footer</h1>
+        </section>
       </div>
     );
   }

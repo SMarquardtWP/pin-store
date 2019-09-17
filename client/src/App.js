@@ -6,39 +6,20 @@ import Product from "./views/Product";
 import Checkout from "./views/Checkout";
 import Contact from "./views/Contact";
 import Navbar from "./views/Navbar";
-
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-function MainRoute() {
-  return <Main />;
-}
-
-function ProductRoute() {
-  return <Product />;
-}
-
-function CartRoute() {
-  return <Cart />;
-}
-
-function CheckoutRoute() {
-  return <Checkout />;
-}
-
-function ContactRoute() {
-  return <Contact />;
-}
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Footer from "./views/Footer";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Navbar />
-        <Route path="/" exact component={MainRoute} />
-        <Route path="/cart/" component={CartRoute} />
-        <Route path="/checkout/" component={CheckoutRoute} />
-        <Route path="/product/" component={ProductRoute} />
-        <Route path="/contact/" component={ContactRoute} />
+        <Route path="/" exact component={Main} />
+        <Route path="/cart/" component={Cart} />
+        <Route path="/checkout/" component={Checkout} />
+        <Route path="/product/" component={Product} />
+        <Route path="/contact/" component={Contact} />
+        <Footer />
       </Router>
     </div>
   );
