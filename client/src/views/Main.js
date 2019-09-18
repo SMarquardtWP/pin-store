@@ -30,9 +30,7 @@ class Main extends React.Component {
 
 export default Main;
 
-{
-  /* <hr />
+/* <hr />
 <h1>main</h1>
 <Link to="/product/">Product</Link>
 <Link to="/contact/">Contact</Link> */
-}
