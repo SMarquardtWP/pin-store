@@ -9,16 +9,35 @@ import Navbar from "./views/Navbar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Footer from "./views/Footer";
 
+import Image from "./assets/temporary_pin_image.png";
+
 const sideColumnClass = "";
 const mainColumnClass = "";
 // const sideColumnClass = "col-xs-0 col-xl-1  bg-secondary";
 // const mainColumnClass = "col-xs-0 col-xl-10";
+const product1 = {
+  _id: 1,
+  description_short: "this is a really nice pin",
+  image_small: Image,
+  title: "Pin1",
+  value: "$10.00"
+};
+const product2 = {
+  _id: 2,
+  description_short: "this is another really nice pin",
+  image_small: Image,
+  title: "Pin2",
+  value: "$12.00"
+};
+
+const cartItem1 = { product: product1, amount: 1 };
+const cartItem2 = { product: product2, amount: 1 };
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      cart: [1],
+      cart: [cartItem1, cartItem2],
       bool: true
     };
   }
@@ -43,6 +62,14 @@ class App extends React.Component {
     return id;
   };
 
+  updateCart = newCart => {
+    console.log("current cart", this.state.cart);
+    // console.log(newCart);
+    // this.setState({
+    //   cart: newCart
+    // });
+  };
+
   render() {
     return (
       <div id="App" className="container p-0 m-0">
@@ -58,7 +85,13 @@ class App extends React.Component {
               />
               <Route
                 path="/cart/"
-                render={props => <Cart {...props} cart={this.state.cart} />}
+                render={props => (
+                  <Cart
+                    {...props}
+                    cart={this.state.cart}
+                    updateCart={this.updateCart}
+                  />
+                )}
               />
               <Route path="/checkout/" component={Checkout} />
               <Route path="/product/" component={Product} />

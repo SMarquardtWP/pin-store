@@ -39,6 +39,12 @@
   height: 120px;
 }
 
+.cart_row_image {
+  height: 50px;
+  width: 50px;
+  /* background: red; */
+}
+
 .cart_input_container {
   color: black;
 }
@@ -46,6 +52,7 @@
 .cart_input {
   padding-top: 10px;
   text-align: center;
+  /* background: red; */
   height: 50px;
   width: 50px;
 }
