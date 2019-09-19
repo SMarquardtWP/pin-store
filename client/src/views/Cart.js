@@ -3,15 +3,18 @@ import { Link } from "react-router-dom";
 
 class Cart extends React.Component {
   constructor(props) {
-    console.log("Cart Constructor");
     super(props);
-    //deep copy the
     const cart = this.copyCart(this.props.cart);
     this.state = {
       cart: cart
     };
   }
 
+  /**
+   * Used in the Constructor, creates a deep copy of the global cart for this cart. Helps facilitate updating the cart from within the component.
+   * @param {object} oldObj - the global cart
+   * @returns {object} - deep copy of the global cart
+   */
   copyCart = oldObj => {
     var newObj = oldObj;
     if (oldObj && typeof oldObj === "object") {
@@ -42,11 +45,6 @@ class Cart extends React.Component {
     this.setState({
       cart: cart
     });
-  };
-
-  updateCart = () => {
-    console.log("update cart here with this button");
-    // pass this components cart up to the overall cart
   };
 
   returnEmptyCartView = () => {
@@ -91,10 +89,6 @@ class Cart extends React.Component {
       </div>
     );
   };
-
-  componentWillUnmount() {
-    console.log("Cart.js Unmounting");
-  }
 
   render() {
     let cartView;

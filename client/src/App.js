@@ -63,11 +63,9 @@ class App extends React.Component {
   };
 
   updateCart = newCart => {
-    console.log("current cart", this.state.cart);
-    // console.log(newCart);
-    // this.setState({
-    //   cart: newCart
-    // });
+    this.setState({
+      cart: newCart
+    });
   };
 
   render() {
