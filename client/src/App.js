@@ -8,6 +8,7 @@ import Contact from "./views/Contact";
 import Navbar from "./views/Navbar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Footer from "./views/Footer";
+import TEMPCart from "./controllers/CartController";
 
 import Image from "./assets/temporary_pin_image.png";
 
@@ -55,11 +56,44 @@ class App extends React.Component {
   };
 
   /**
+   * Used in the Constructor, creates a deep copy of the global cart for this cart. Helps facilitate updating the cart from within the component.
+   * @param {object} oldObj - the global cart
+   * @returns {object} - deep copy of the global cart
+   */
+  copyCart = oldObj => {
+    var newObj = oldObj;
+    if (oldObj && typeof oldObj === "object") {
+      newObj =
+        Object.prototype.toString.call(oldObj) === "[object Array]" ? [] : {};
+
+      for (var i in oldObj) {
+        newObj[i] = this.copyCart(oldObj[i]);
+      }
+    }
+    return newObj;
+  };
+
+  /**
    * Removes a product from the shopping cart whose id matches the passed id
    * @param {string} id
    */
-  removeFromCart = id => {
-    return id;
+  removeFromCart = _id => {
+    console.log("App.js removeFromCart()", _id);
+    // return _id;
+
+    const oldCart = this.copyCart(this.state.cart);
+    const newCart = [];
+    // loop over the current cart
+    for (let i = 0; i < oldCart.length; i++) {
+      if (oldCart[i].product._id !== _id) {
+        newCart.push(oldCart[i]);
+      }
+    }
+    // add all products that don't have _id to the new cart
+    // set stat of new cart.
+    this.setState({
+      cart: newCart
+    });
   };
 
   updateCart = newCart => {
@@ -68,9 +102,15 @@ class App extends React.Component {
     });
   };
 
+  TEMPaddCart = () => {
+    TEMPCart.cart.push(true);
+    console.log(TEMPCart.cart);
+  };
+
   render() {
     return (
       <div id="App" className="container p-0 m-0">
+        <button onClick={this.TEMPaddCart}>add to cart from App.js</button>
         <div className="row p-0 m-0">
           <div className={sideColumnClass}></div>
           <div className={mainColumnClass}>
@@ -88,6 +128,7 @@ class App extends React.Component {
                     {...props}
                     cart={this.state.cart}
                     updateCart={this.updateCart}
+                    removeFromCart={this.removeFromCart}
                   />
                 )}
               />

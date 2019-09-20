@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import TEMPCart from "../controllers/CartController";
 
 class Cart extends React.Component {
   constructor(props) {
@@ -56,9 +57,15 @@ class Cart extends React.Component {
     );
   };
 
+  TEMPRemoveFromCart = () => {
+    TEMPCart.cart.pop();
+    console.log(TEMPCart.cart);
+  };
+
   returnCartView = () => {
     return (
       <div className="container">
+        <button onClick={this.TEMPRemoveFromCart}>Remove from cart</button>
         <div className="row">
           <div className="col-8">
             <hr />
@@ -68,6 +75,7 @@ class Cart extends React.Component {
                   key={index}
                   cartItem={cartItem}
                   updateItemAmount={this.updateItemAmount}
+                  removeFromCart={this.props.removeFromCart}
                 />
               );
             })}
@@ -130,7 +138,13 @@ class CartRow extends React.Component {
     return (
       <div className="row p-0 m-0 cart_row border-bottom">
         <section className="col-2 d-flex align-items-center">
-          <p>Remove</p>
+          <button
+            onClick={() =>
+              this.props.removeFromCart(this.props.cartItem.product._id)
+            }
+          >
+            remove
+          </button>
         </section>
         <section className="col-2 d-flex align-items-center justify-content-center">
           <img
