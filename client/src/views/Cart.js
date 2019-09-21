@@ -1,15 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import TEMPCart from "../controllers/CartController";
+import { DevelopmentCart as UserCart } from "../controllers/CartController";
 
 class Cart extends React.Component {
   constructor(props) {
     super(props);
+    // the cart that will be displayed must be a copy of the actual cart. So you can make changes to the amount without risking lasting changes to the stored cart.
     const cart = this.copyCart(this.props.cart);
     this.state = {
       cart: cart
     };
   }
+
+  /**
+   * The onChangeHandler for updating products within the state.
+   * @param {String} _id - the _id of the product
+   * @param {Numver} newAmount
+   * @param {Number} index - position of the item within the Cart
+   */
+  changeProductAmount = (_id, newAmount, index) => {
+    const cart = this.state.cart;
+    if (cart[index].product._id === _id) {
+      cart[index].amount = newAmount;
+      this.setState({
+        cart: cart
+      });
+    } else {
+      console.log("passed _id and product._id do not match");
+      return;
+    }
+  };
 
   /**
    * Used in the Constructor, creates a deep copy of the global cart for this cart. Helps facilitate updating the cart from within the component.
@@ -27,6 +47,37 @@ class Cart extends React.Component {
       }
     }
     return newObj;
+  };
+
+  returnEmptyCartView = () => {
+    return (
+      <p>
+        Your cart is empty! Soulds like a good time to{" "}
+        <span className="text-primary">start shopping</span>
+      </p>
+    );
+  };
+
+  returnCartView = () => {
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-8">
+            <hr />
+            {UserCart.map((cartItem, index) => {
+              return <CartRow key={index} cartItem={cartItem} />;
+            })}
+          </div>
+          <div className="col-4">
+            <hr />
+            <p>price of items</p>
+            <p>shipping price</p>
+            <p>total price</p>
+            <button>checkout</button>
+          </div>
+        </div>
+      </div>
+    );
   };
 
   updateItemAmount = event => {
@@ -48,66 +99,16 @@ class Cart extends React.Component {
     });
   };
 
-  returnEmptyCartView = () => {
-    return (
-      <p>
-        Your cart is empty! Soulds like a good time to{" "}
-        <span className="text-primary">start shopping</span>
-      </p>
-    );
-  };
-
-  TEMPRemoveFromCart = () => {
-    TEMPCart.cart.pop();
-    console.log(TEMPCart.cart);
-  };
-
-  returnCartView = () => {
-    return (
-      <div className="container">
-        <button onClick={this.TEMPRemoveFromCart}>Remove from cart</button>
-        <div className="row">
-          <div className="col-8">
-            <hr />
-            {this.state.cart.map((cartItem, index) => {
-              return (
-                <CartRow
-                  key={index}
-                  cartItem={cartItem}
-                  updateItemAmount={this.updateItemAmount}
-                  removeFromCart={this.props.removeFromCart}
-                />
-              );
-            })}
-            <button
-              className="mt-4"
-              onClick={() => this.props.updateCart(this.state.cart)}
-            >
-              update cart
-            </button>
-          </div>
-          <div className="col-4">
-            <hr />
-            <p>price of items</p>
-            <p>shipping price</p>
-            <p>total price</p>
-            <button>checkout</button>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   render() {
     let cartView;
-    if (this.props.cart.length === 0) {
+    if (UserCart.length === 0) {
       cartView = this.returnEmptyCartView();
     } else {
       cartView = this.returnCartView();
     }
     return (
       <div className="text-center">
-        <h1>Cart | {this.state.cart.length}</h1>
+        <h1>Cart | {UserCart.length}</h1>
         <div className="mb-4">{cartView}</div>
         <Link to="/">Main</Link>
         <Link to="/checkout/">Checkout</Link>
@@ -119,9 +120,11 @@ class Cart extends React.Component {
 class CartRow extends React.Component {
   constructor(props) {
     super(props);
+    // console.log(props.cartItem.amount);
     // const
     this.state = {
-      amount: this.props.cartItem.amount
+      amount: this.props.cartItem.amount,
+      _id: this.props.cartItem.product._id
     };
   }
 
@@ -129,9 +132,12 @@ class CartRow extends React.Component {
     event.preventDefault();
     // must be a number
 
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+    this.setState(
+      {
+        [event.target.name]: event.target.value
+      },
+      () => console.log(UserCart)
+    );
   };
 
   render() {
@@ -168,9 +174,9 @@ class CartRow extends React.Component {
           <input
             className="cart_input"
             type="text"
-            name={this.props.cartItem.product._id}
-            value={this.props.cartItem.amount}
-            onChange={this.props.updateItemAmount}
+            name="amount"
+            value={this.state.amount}
+            onChange={this.onChangeHander}
           />
         </section>
       </div>

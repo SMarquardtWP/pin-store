@@ -26,9 +26,11 @@ describe("CartController Unit Tests", () => {
     expect(cart).toEqual(expected);
   });
 
-  //   test("updateAmount()", () => {
-  //     const cart = [{ product: { _id: 2 }, amount: 1 }];
-  //     CartController.updateAmount(cart, 3);
-  //     expect(cart[0].amount).toEqual(3);
-  //   });
+  test("updateAmount()", () => {
+    const cart = [product1, product2, product3];
+    CartController.updateAmount(cart, 2, 5);
+    const product2Updated = { product: { _id: 2 }, amount: 5 };
+    const expected = [product1, product2Updated, product3];
+    expect(cart).toEqual(expected);
+  });
 });

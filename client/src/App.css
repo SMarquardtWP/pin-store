@@ -9,6 +9,35 @@
   background: lightsteelblue;
 }
 
+.main_product_container {
+  position: relative;
+  z-index: 0;
+  /* background: red; */
+  height: 300px;
+  width: 300px;
+}
+.main_product_image {
+  height: 280px;
+  width: 280px;
+  /* background: lightseagreen; */
+  position: absolute;
+  z-index: 1;
+}
+
+.main_product_text_container {
+  position: absolute;
+  height: 280px;
+  width: 280px;
+  z-index: 3;
+}
+
+.main_product_text {
+  background: violet;
+  opacity: 0.85;
+  height: 280px;
+  width: 280px;
+}
+
 #brand {
   height: 300px;
   width: 475px;
