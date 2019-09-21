@@ -1,6 +1,7 @@
 import React from "react";
 import { Cart } from "./TemporaryDataBase";
 import { Animated } from "react-animated-css";
+import { Link } from "react-router-dom";
 
 class Main extends React.Component {
   constructor() {
@@ -75,8 +76,8 @@ class Product extends React.Component {
     return (
       <div
         className="main_product_container d-flex justify-content-center align-items-center"
-        onMouseEnter={this.startHovering}
-        onMouseLeave={this.stopHovering}
+        onMouseOver={this.startHovering}
+        onMouseOut={this.stopHovering}
         onClick={() => this.props.toProductPage(this.props.item.product._id)}
       >
         <img
@@ -85,16 +86,25 @@ class Product extends React.Component {
           alt=""
         />
         <div className="main_product_text_container">
-          <Animated isVisible={this.state.hovering} animateOnMount={false}>
-            <div className="main_product_text d-flex justify-content-center align-items-center rounded">
-              <div className="container text-light text-center">
-                <h6>{this.props.item.product.name}</h6>
-                <p>{this.props.item.product.description_short}</p>
-                <hr />
-                <p>{this.props.item.product.price}</p>
+          <Link
+            to={{
+              pathname: "/product/",
+              state: {
+                product: this.props.item.product
+              }
+            }}
+          >
+            <Animated isVisible={this.state.hovering} animateOnMount={false}>
+              <div className="main_product_text d-flex justify-content-center align-items-center rounded">
+                <div className="container text-light text-center">
+                  <h6>{this.props.item.product.name}</h6>
+                  <p>{this.props.item.product.description_short}</p>
+                  <hr />
+                  <p>{this.props.item.product.price}</p>
+                </div>
               </div>
-            </div>
-          </Animated>
+            </Animated>
+          </Link>
         </div>
       </div>
     );

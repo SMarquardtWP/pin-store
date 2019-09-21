@@ -8,7 +8,7 @@ import Contact from "./views/Contact";
 import Navbar from "./views/Navbar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Footer from "./views/Footer";
-import TEMPCart from "./controllers/CartController";
+// import TEMPCart from "./controllers/CartController";
 
 import Image from "./assets/temporary_pin_image.png";
 
@@ -102,15 +102,9 @@ class App extends React.Component {
     });
   };
 
-  TEMPaddCart = () => {
-    TEMPCart.cart.push(true);
-    console.log(TEMPCart.cart);
-  };
-
   render() {
     return (
       <div id="App" className="container p-0 m-0">
-        <button onClick={this.TEMPaddCart}>add to cart from App.js</button>
         <div className="row p-0 m-0">
           <div className={sideColumnClass}></div>
           <div className={mainColumnClass}>

@@ -1,6 +1,7 @@
 #App {
   min-height: 100vh;
   min-width: 100vw;
+  font-family: "Gentium Book Basic", serif;
 }
 
 .main_product {
