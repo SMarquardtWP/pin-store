@@ -8,7 +8,20 @@ class Product extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="container">
+        <hr />
+        <div className="row p-0 m-0">
+          <div className="col-4 bg-success text-center">
+            <p>title</p>
+            <p>line</p>
+            <p>amount</p>
+            <p>description</p>
+            <button>add to cart?</button>
+          </div>
+          <div className="col-8 bg-primary">
+            <p>image here</p>
+          </div>
+        </div>
         <h1>Product</h1>
         <Link to="/cart/">Cart</Link>
       </div>
