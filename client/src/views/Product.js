@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 class Product extends React.Component {
   addToCart = product => {
     console.log("addToCart()", product);
+    // Step 1 : Add to the global cart
+    // Step 2 : Route User to next view
   };
 
   render() {
@@ -18,7 +20,8 @@ class Product extends React.Component {
             <h3>{product.price}</h3>
             <p>{product.description_full}</p>
             <button onClick={() => this.addToCart(product)}>
-              <Link
+              add to cart
+              {/* <Link
                 to={{
                   pathname: "/cart/",
                   state: {
@@ -27,15 +30,15 @@ class Product extends React.Component {
                 }}
               >
                 add to cart
-              </Link>
+              </Link> */}
             </button>
           </div>
           <div className="col-8 d-flex justify-content-center align-items-center">
             <img className="product_image" src={product.image_product} alt="" />
           </div>
         </div>
-        <h1>Product</h1>
-        <Link to="/cart/">Cart</Link>
+        {/* <h1>Product</h1>
+        <Link to="/cart/">Cart</Link> */}
       </div>
     );
   }
