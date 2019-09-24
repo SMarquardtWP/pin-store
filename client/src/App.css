@@ -4,6 +4,11 @@
   font-family: "Gentium Book Basic", serif;
 }
 
+.product_image {
+  height: 550px;
+  width: 550px;
+}
+
 .main_product {
   height: 280px;
   width: 280px;

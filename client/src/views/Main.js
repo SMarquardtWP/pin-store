@@ -43,7 +43,7 @@ class Main extends React.Component {
                 className="col-xs-12 col-md-6 col-lg-4 m-0 pb-3 d-flex justify-content-center"
                 key={index}
               >
-                <Product item={item} toProductPage={this.toProductPage} />
+                <MainProduct item={item} toProductPage={this.toProductPage} />
               </div>
             );
           })}
@@ -53,10 +53,9 @@ class Main extends React.Component {
   }
 }
 
-class Product extends React.Component {
+class MainProduct extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
     this.state = { hovering: false };
   }
 
