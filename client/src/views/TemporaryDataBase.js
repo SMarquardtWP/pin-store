@@ -45,6 +45,10 @@ const product3 = {
 };
 const Cart = [product1, product2, product3];
 
+const orders = {
+  trees: "We are trees"
+}
+
 module.exports = {
   Cart
 };
