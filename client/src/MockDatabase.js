@@ -1,10 +1,3 @@
-// import Image from "./assets/temporary_pin_image.png";
-
-// import Photo from "../assets/temporary_pin_image.png";
-
-// DEPRECATED
-const Photo = require("../assets/temporary_pin_image.png");
-
 const product1 = {
   product: {
     _id: 1,
@@ -44,8 +37,60 @@ const product3 = {
   },
   amount: 3
 };
-const Cart = [product1, product2, product3];
 
-module.exports = {
-  Cart
+const order1 = {
+  orderID: "",
+  status: "", //Integer
+  contactInformation: {
+    name: "", // String
+    address: {
+      line1: "", //String
+      line2: "", //String
+      city: "", //String
+      state: "", //String
+      zip: "", //String
+      country: "" //String
+    },
+    emailAddress: "", //String,
+    phoneNumber: "" //String
+  },
+  order: [
+    {
+      productID: "",
+      quantity: ""
+    }
+  ],
+  notes: ""
 };
+
+const order2 = {
+  orderID: "",
+  orderDate: "",
+  status: "", //Integer
+  contactInformation: {
+    name: "", // String
+    address: {
+      line1: "", //String
+      line2: "", //String
+      city: "", //String
+      state: "", //String
+      zip: "", //String
+      country: "" //String
+    },
+    emailAddress: "", //String,
+    phoneNumber: "" //String
+  },
+  order: [
+    {
+      productID: "",
+      quantity: ""
+    }
+  ],
+  notes: ""
+};
+
+const inventory = [product1, product2, product3];
+
+const orders = [order1, order2];
+
+(module.exports = inventory), orders;
