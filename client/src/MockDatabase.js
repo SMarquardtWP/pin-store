@@ -1,3 +1,5 @@
+const Photo = require("../temporary_pin_image.png");
+
 const product1 = {
   product: {
     _id: 1,
