@@ -52,7 +52,7 @@ class Cart extends React.Component {
   returnEmptyCartView = () => {
     return (
       <p>
-        Your cart is empty! Soulds like a good time to{" "}
+        Your cart is empty! Sounds like a good time to{" "}
         <span className="text-primary">start shopping</span>
       </p>
     );
@@ -128,7 +128,7 @@ class CartRow extends React.Component {
     };
   }
 
-  onChangeHander = event => {
+  onChangeHandler = event => {
     event.preventDefault();
     // must be a number
 
@@ -176,7 +176,7 @@ class CartRow extends React.Component {
             type="text"
             name="amount"
             value={this.state.amount}
-            onChange={this.onChangeHander}
+            onChange={this.onChangeHandler}
           />
         </section>
       </div>

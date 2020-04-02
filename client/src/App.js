@@ -5,6 +5,7 @@ import Cart from "./views/Cart";
 import Product from "./views/Product";
 import Checkout from "./views/Checkout";
 import Contact from "./views/Contact";
+import Admin from "./views/Admin";
 import Navbar from "./views/Navbar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Footer from "./views/Footer";
@@ -129,6 +130,7 @@ class App extends React.Component {
               <Route path="/checkout/" component={Checkout} />
               <Route path="/product/" component={Product} />
               <Route path="/contact/" component={Contact} />
+              <Route path="/admin/" component={Admin} />
               <Footer />
             </Router>
           </div>

@@ -12,8 +12,11 @@ class Footer extends React.Component {
         <Link to="/contact/" className="mr-2 link_tag">
           contact
         </Link>
-        <Link to="/cart/" className="link_tag">
+        <Link to="/cart/" className="mr-2 link_tag">
           cart
+        </Link>
+        <Link to="/admin/" className="link_tag">
+          admin
         </Link>
         </div>
         <p>copyright C 2019 StillSlangin</p>

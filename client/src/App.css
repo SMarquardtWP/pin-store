@@ -91,3 +91,15 @@
   height: 50px;
   width: 50px;
 }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*~~~~~~~~~~~~~~~~~~~~~~Admin Styles~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.manifest-container {
+background-color: palegreen;
+}
+
+.manifest-entry {
+background-color: paleturquoise;
+}

@@ -11,8 +11,11 @@ class Navbar extends React.Component {
         <Link to="/contact/" className="mr-2 link_tag">
           contact
         </Link>
-        <Link to="/cart/" className="link_tag">
+        <Link to="/cart/" className="mr-2 link_tag">
           cart
+        </Link>
+        <Link to="/admin/" className="link_tag">
+          admin
         </Link>
         <section className="d-flex justify-content-center pb-5 pt-5">
           <div id="brand" className="rounded text-center">
