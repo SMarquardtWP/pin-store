@@ -34,7 +34,7 @@ class Admin extends React.Component {
 
     render() {
         return (
-            <ManifestBoard manifest={this.state.manifest}/>
+            <ManifestBoard manifest={this.state.manifest} />
         );
     }
 }
@@ -49,20 +49,15 @@ class ManifestBoard extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid">
-                <section className="row p-0 m-0">
+            <div className="container">
+                <section className="p-0 m-0">
                     {this.state.manifest.map((item, index) => {
                         return (
-                            <div className="manifest-container d-flex justify-content-center" key={index}>
-                                <ul>
-                                    <li className="row p-0 m-0">
-                                        <ManifestEntry item={item} />
-                                    </li>
-                                </ul>
+                            <div className="manifest-container container d-flex" key={index}>
+                                <ManifestEntry item={item} />
                             </div>
                         )
-                    }
-                    )}
+                    })}
                 </section>
             </div>
         );
@@ -71,22 +66,26 @@ class ManifestBoard extends React.Component {
 
 const ManifestEntry = (props) => {
     return (
-        <li><div>{props.item._order_id}</div>
-            <div>{props.item.date_ordered}</div>
-            <div><ShippingAddress info={props.item.shipping_info} /></div>
-            <div>{props.item.email}</div>
-            <div>{props.item.products_purchased}</div>
-            <div>{props.item.order_status}</div></li>
+        <div className="container-fluid p-0 m-0 manifest-entry border-bottom">
+            <div className="row">
+                <section className="col-1 d-flex align-items-center">{props.item._order_id}</section>
+                <section className="col-2 d-flex align-items-center">{props.item.date_ordered}</section>
+                <section className="col-3 d-flex text-left align-items-center"><ShippingAddress info={props.item.shipping_info} /></section>
+                <section className="col-4 d-flex align-items-center">{props.item.email}</section>
+                <section className="col-1 d-flex align-items-center">{props.item.products_purchased}</section>
+                <section className="col-1 d-flex align-items-center">{props.item.order_status}</section>
+            </div>
+        </div>
     )
 }
 
 const ShippingAddress = (props) => {
     return (
-        <ul>
+        <ul className="list-unstyled mt-1">
             <li>{props.info.name}</li>
             <li>{props.info.address1}</li>
             <li>{props.info.address2}</li>
-            <li>{props.info.city}, {props.state} {props.zip}</li>
+            <li>{props.info.city}, {props.info.state} {props.info.zip}</li>
         </ul>
     )
 }
