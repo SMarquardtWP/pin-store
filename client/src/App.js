@@ -91,7 +91,7 @@ class App extends React.Component {
       }
     }
     // add all products that don't have _id to the new cart
-    // set stat of new cart.
+    // set state of new cart.
     this.setState({
       cart: newCart
     });

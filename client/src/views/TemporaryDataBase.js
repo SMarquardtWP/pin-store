@@ -1,15 +1,18 @@
 // import Image from "./assets/temporary_pin_image.png";
-
 // import Photo from "../assets/temporary_pin_image.png";
-
 // DEPRECATED
-const Photo = require("../assets/temporary_pin_image.png");
+
+//const Photo = require("../assets/temporary_pin_image.png");
+const Photo1 = require("../assets/ratpin.png");
+const Photo2 = require("../assets/pizzapin.png");
+const Photo3 = require("../assets/flagpin.png");
+
 
 const product1 = {
   product: {
     _id: 10001,
-    image_main: Photo,
-    image_product: Photo,
+    image_main: Photo1,
+    image_product: Photo1,
     name: "Cool Pin",
     description_short: "product description limited 64 characters",
     description_full:
@@ -21,8 +24,8 @@ const product1 = {
 const product2 = {
   product: {
     _id: 10002,
-    image_main: Photo,
-    image_product: Photo,
+    image_main: Photo2,
+    image_product: Photo2,
     name: "Neat Pin",
     description_short: "product description limited 64 characters",
     description_full:
@@ -34,8 +37,8 @@ const product2 = {
 const product3 = {
   product: {
     _id: 10003,
-    image_main: Photo,
-    image_product: Photo,
+    image_main: Photo3,
+    image_product: Photo3,
     name: "Dope Pin",
     description_short: "product description limited 64 characters",
     description_full:

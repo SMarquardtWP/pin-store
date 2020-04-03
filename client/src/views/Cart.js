@@ -15,7 +15,7 @@ class Cart extends React.Component {
   /**
    * The onChangeHandler for updating products within the state.
    * @param {String} _id - the _id of the product
-   * @param {Numver} newAmount
+   * @param {Number} newAmount
    * @param {Number} index - position of the item within the Cart
    */
   changeProductAmount = (_id, newAmount, index) => {

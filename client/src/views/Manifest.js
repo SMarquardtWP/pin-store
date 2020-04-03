@@ -1,8 +1,10 @@
+//UNUSED IN CURRENT BUILD
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { Manifest } from "./TemporaryDataBase"
 
-class Admin extends React.Component {
+class Manifest extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -28,7 +30,7 @@ class ManifestBoard extends React.Component {
     render() {
         return (
             <div className="container">
-                <section className="row align-items-end">
+                <section className="row">
                     <SearchBar />
                     <Filter />
                 </section>
@@ -49,7 +51,7 @@ class ManifestBoard extends React.Component {
 
 const SearchBar = (props) => {
     return (
-        <div className="search-bar col-3 mb-3 d-flex">
+        <div className="search-bar col-3 d-flex">
             <button type="button">Search</button>
             <input type="text" placeholder="Search term here" />
         </div>
@@ -58,7 +60,7 @@ const SearchBar = (props) => {
 
 const Filter = (props) => {
     return (
-        <div className="col-9 d-flex p-0 m-0 filter">
+        <div className="col-9 d-flex">
             <h3>Show all:</h3>
             <span className="m-2">
                 <input className="mr-1" type="checkbox" id="filterDelivered" name="filterDelivered" value="Delivered" />
@@ -102,4 +104,4 @@ const ShippingAddress = (props) => {
     )
 }
 
-export default Admin;
+export default Manifest;

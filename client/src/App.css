@@ -92,14 +92,15 @@
   width: 50px;
 }
 
+input {
+  border-radius: 7px;
+}
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 /*~~~~~~~~~~~~~~~~~~~~~~Admin Styles~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-.manifest-container {
-background-color: palegreen;
+.search-bar {
+  height: 30px;
 }
 
-.manifest-entry {
-background-color: paleturquoise;
-}
