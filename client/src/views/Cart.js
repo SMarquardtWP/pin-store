@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { DevelopmentCart as UserCart } from "../controllers/CartController";
+//import UserCart from "../controllers/CartController";
+//import { removeFromCart } from "../controllers/CartController";
 
 class Cart extends React.Component {
   constructor(props) {
     super(props);
     // the cart that will be displayed must be a copy of the actual cart. So you can make changes to the amount without risking lasting changes to the stored cart.
-    const cart = this.copyCart(this.props.cart);
+    const tempCart = this.copyCart(this.props.cart);
     this.state = {
-      cart: cart
+      cart: tempCart
     };
   }
 
@@ -49,6 +50,7 @@ class Cart extends React.Component {
     return newObj;
   };
 
+  // The view rendered when the Cart has no items in it
   returnEmptyCartView = () => {
     return (
       <p>
@@ -58,14 +60,15 @@ class Cart extends React.Component {
     );
   };
 
+  // Maps through array of all items in cart, returning a CartRow component for each, as well as totals and links at the end.
   returnCartView = () => {
     return (
       <div className="container">
         <div className="row">
           <div className="col-8">
             <hr />
-            {UserCart.map((cartItem, index) => {
-              return <CartRow key={index} cartItem={cartItem} />;
+            {this.state.cart.map((cartItem, index) => {
+              return <CartRow key={index} cartItem={cartItem} removeFromCart={this.props.removeFromCart} />;
             })}
           </div>
           <div className="col-4">
@@ -98,19 +101,27 @@ class Cart extends React.Component {
       cart: cart
     });
   };
+  
+  // Checks for changes in cart prop and updates state when this occurs, needed for Cart view to reflect changes in cart like removal of items.
+  componentDidUpdate(prevProps) {
+    if(prevProps.cart !== this.props.cart) {
+      this.setState({cart: this.props.cart});
+    }
+  }
 
+  // Checks if any items are in cart, using returnCartView to render them systematically if there are.
   render() {
     let cartView;
-    if (UserCart.length === 0) {
+    if (this.state.cart.length === 0) {
       cartView = this.returnEmptyCartView();
     } else {
       cartView = this.returnCartView();
     }
     return (
       <div className="text-center">
-        <h1>Cart | {UserCart.length}</h1>
+        <h1>Cart | {this.state.cart.length}</h1>
         <div className="mb-4">{cartView}</div>
-        <Link to="/">Main</Link>
+        <Link className="mr-2"to="/">Main</Link>
         <Link to="/checkout/">Checkout</Link>
       </div>
     );
@@ -120,11 +131,10 @@ class Cart extends React.Component {
 class CartRow extends React.Component {
   constructor(props) {
     super(props);
-    // console.log(props.cartItem.amount);
+    //console.log(this.props);
     // const
     this.state = {
       amount: this.props.cartItem.amount,
-      _id: this.props.cartItem.product._id
     };
   }
 
@@ -136,7 +146,7 @@ class CartRow extends React.Component {
       {
         [event.target.name]: event.target.value
       },
-      () => console.log(UserCart)
+      () => console.log(this.state.cart)
     );
   };
 

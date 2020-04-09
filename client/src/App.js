@@ -35,6 +35,8 @@ const product2 = {
 const cartItem1 = { product: product1, amount: 1 };
 const cartItem2 = { product: product2, amount: 1 };
 
+const testCart= [cartItem1, cartItem2];
+
 class App extends React.Component {
   constructor() {
     super();
@@ -83,13 +85,17 @@ class App extends React.Component {
     // return _id;
 
     const oldCart = this.copyCart(this.state.cart);
+    console.log("The old cart length was " + oldCart.length);
     const newCart = [];
+    console.log("The new cart length was " + newCart.length);
     // loop over the current cart
     for (let i = 0; i < oldCart.length; i++) {
+      console.log("I'm going to check id" + oldCart[i].product._id);
       if (oldCart[i].product._id !== _id) {
         newCart.push(oldCart[i]);
       }
     }
+    console.log("The new cart length is " + newCart.length);
     // add all products that don't have _id to the new cart
     // set state of new cart.
     this.setState({
@@ -109,7 +115,7 @@ class App extends React.Component {
         <div className="row p-0 m-0">
           <div className={sideColumnClass}></div>
           <div className={mainColumnClass}>
-            <Router>
+            {<Router>
               <Navbar />
               <Route
                 path="/"
@@ -132,7 +138,7 @@ class App extends React.Component {
               <Route path="/contact/" component={Contact} />
               <Route path="/admin/" component={Admin} />
               <Footer />
-            </Router>
+            </Router>}
           </div>
           <div className={sideColumnClass}></div>
         </div>

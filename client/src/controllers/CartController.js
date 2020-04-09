@@ -15,7 +15,7 @@ const DevelopmentCart = [product1, product2, product3];
  * @param {Array} cart
  * @param {Object} product
  */
-function addToCart(cart, product) {
+export function addToCart(cart, product) {
   // add to cart
   cart.push(product);
   // sort cart based on id
@@ -27,7 +27,7 @@ function addToCart(cart, product) {
  * @param {Array} cart
  * @param {String} _id
  */
-function removeFromCart(cart, _id) {
+export function removeFromCart(cart, _id) {
   // loop over cart
   for (let i = 0; i < cart.length; i++) {
     const cartItem = cart[i];
@@ -43,7 +43,7 @@ function removeFromCart(cart, _id) {
  * @param {String} _id - the id of the product whose amount will be changed
  * @param {Number} newAmount - the new amount the user wants to purchase
  */
-function updateAmount(cart, _id, newAmount) {
+export function updateAmount(cart, _id, newAmount) {
   // loop over cart
   for (let i = 0; i < cart.length; i++) {
     const product = cart[i].product;
@@ -56,10 +56,38 @@ function updateAmount(cart, _id, newAmount) {
   }
 }
 
-module.exports = {
-  Cart,
-  DevelopmentCart,
-  addToCart,
-  removeFromCart,
-  updateAmount
-};
+// class DevelopmentCart extends React.Component {
+// constructor() {
+//   super();
+//   this.state = {
+
+//   };
+// }
+
+
+// <Navbar />
+//   <Route
+//     path="/"
+//     exact
+//     render={props => <Main {...props} addToCart={this.addToCart} />}
+//   />
+//   <Route
+//     path="/cart/"
+//     render={props => (
+//       <Cart
+//         {...props}
+//         cart={this.state.cart}
+//         updateCart={this.updateCart}
+//         removeFromCart={this.removeFromCart}
+//       />
+//     )}
+//   />
+//   <Route path="/checkout/" component={Checkout} />
+//   <Route path="/product/" component={Product} />
+//   <Route path="/contact/" component={Contact} />
+//   <Route path="/admin/" component={Admin} />
+//   <Footer />
+// }
+
+// export default DevelopmentCart;
+

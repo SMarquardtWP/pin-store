@@ -72,7 +72,8 @@ const Filter = (props) => {
                 <input className="mr-1" type="checkbox" id="filterPaid" name="filterPaid" value="Paid" />
                 <label for="filterPaid">Paid Orders</label>
             </span>
-        </div>
+            <button type="button">Refresh</button>
+       </div>
     )
 }
 

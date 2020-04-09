@@ -48,7 +48,7 @@ const product3 = {
   amount: 3
 };
 
-const Cart = [product1, product2, product3];
+const Inventory = [product1, product2, product3];
 
 //date format: yyyy_mm_dd_hh_mm_ss
 
@@ -85,6 +85,6 @@ const order3 = {
 const Manifest = [order1, order2, order3]
 
 module.exports = {
-  Cart,
+  Inventory,
   Manifest
 };

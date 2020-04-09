@@ -1,5 +1,5 @@
 import React from "react";
-import { Cart } from "./TemporaryDataBase";
+import { Inventory } from "./TemporaryDataBase";
 import { Animated } from "react-animated-css";
 import { Link } from "react-router-dom";
 
@@ -7,7 +7,7 @@ class Main extends React.Component {
   constructor() {
     super();
     this.state = {
-      cart: Cart,
+      inventory: Inventory,
       hovered: false
     };
   }
@@ -37,7 +37,7 @@ class Main extends React.Component {
     return (
       <div className="container-fluid">
         <section className="row p-0 m-0">
-          {this.state.cart.map((item, index) => {
+          {this.state.inventory.map((item, index) => {
             return (
               <div
                 className="col-xs-12 col-md-6 col-lg-4 m-0 pb-3 d-flex justify-content-center"
