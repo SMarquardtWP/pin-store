@@ -1,12 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Popup from "./Popup.js"
 
 class Product extends React.Component {
-  addToCart = product => {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      showPopup: false
+    };
+  }
+
+  toggleAddPopup(product) {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
+
+  addToCart(product) {
     console.log("addToCart()", product);
     // Step 1 : Add to the global cart
+
     // Step 2 : Route User to next view
-  };
+  }
 
   render() {
     const { product } = this.props.location.state;
@@ -19,7 +33,7 @@ class Product extends React.Component {
             <hr />
             <h3>{product.price}</h3>
             <p>{product.description_full}</p>
-            <button onClick={() => this.addToCart(product)}>
+            <button onClick={() => this.toggleAddPopup(product)}>
               add to cart
               {/* <Link
                 to={{
@@ -39,6 +53,14 @@ class Product extends React.Component {
         </div>
         {/* <h1>Product</h1>
         <Link to="/cart/">Cart</Link> */}
+        {this.state.showPopup ?
+          <Popup
+            text="Do you really want to buy this?"
+            closePopup={this.toggleAddPopup.bind(this)}
+            closePopup={this.addToCart.bind(this)}
+          />
+          : null
+        }
       </div>
     );
   }

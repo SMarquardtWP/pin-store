@@ -62,15 +62,15 @@ const Filter = (props) => {
             <h3>Show all:</h3>
             <span className="m-2">
                 <input className="mr-1" type="checkbox" id="filterDelivered" name="filterDelivered" value="Delivered" />
-                <label for="filterDelivered">Delivered Orders</label>
+                <label htmlFor="filterDelivered">Delivered Orders</label>
             </span>
             <span className="m-2">
                 <input className="mr-1" type="checkbox" id="filterShipped" name="filterShipped" value="Shipped" />
-                <label for="filterShipped">Shipped Orders</label>
+                <label htmlFor="filterShipped">Shipped Orders</label>
             </span>
             <span className="m-2">
                 <input className="mr-1" type="checkbox" id="filterPaid" name="filterPaid" value="Paid" />
-                <label for="filterPaid">Paid Orders</label>
+                <label htmlFor="filterPaid">Paid Orders</label>
             </span>
             <button type="button">Refresh</button>
        </div>
